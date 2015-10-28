@@ -2,4 +2,18 @@
 
 This is a drop-in library to request that anyone that installs your Tweak follow you on Twitter.
 
-Don't forget to add "Social" and "Accounts" to your _FRAMEWORKS list.
+### Installation
+
+Download the ZIP of this repository (or clone it). Make sure its at the root of your project.
+
+Open your Makefile and...
+
+* Add "FollowPlea.xm" to your "TweakName_FILES".
+* Add "Social" and "Accounts" to your "TweakName_FRAMEWORKS" list.
+
+Now open "FollowPleaSettings.h" and customize to your liking. Enjoy.
+
+
+## Contributing
+
+Feel free to fork and send pull requests if this helped you and you wanna contribute to making it better.
