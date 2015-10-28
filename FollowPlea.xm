@@ -90,8 +90,10 @@
 
 %ctor {
 	@autoreleasepool {
-		if ( ! FP_FIRST_RUN()) {
+		if (FP_FIRST_RUN) {
+			HBLogDebug(@"Initialized");
 			%init(FOLLOW_PLEA);
 		}
+		HBLogDebug(@"Should Have Initialized");
 	}
 }

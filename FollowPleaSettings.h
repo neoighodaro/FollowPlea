@@ -26,6 +26,21 @@
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+
+/**
+ * FollowPlea Marker File
+ *
+ * This is the file that would be created that will let FollowPlea know it
+ * has run at least once on this device. Keep it unique.
+ */
+
+#define FP_FILE @"/var/mobile/Library/Preferences/FollowPlea.run"
+
+
+/**
+ * Welcome UIAlertView
+ */
+
 #define FP_PLEA_MSG_TITLE @"Thanks for Installing!"
 
 #define FP_PLEA_MSG_BODY @"A lot of hard work goes into making tweaks. Please consider following me on Twitter!"
@@ -34,18 +49,37 @@
 
 #define FP_OKAY_LABEL @"Okay Sure"
 
+
+/**
+ * Access Granted UIAlertView
+ */
+
 #define FP_WHICH_ACCOUNT_TITLE @"Which Account?"
 
 #define FP_WHICH_ACCOUNT_BODY @"Select an account to follow with."
 
 #define FP_ALL_ACCOUNTS_LABEL @"All Accounts!"
 
+
+/**
+ * Your Twitter Screen Name
+ */
+
 #define FP_TWITTER_SCREENNAME @"TapSharp"
 
+
+/**
+ * Follow Response callback.
+ *
+ * Callback thats fired when a single twitter follow request returns
+ * a response.
+ */
 #define FP_CALLBACK_HANDLER(data, urlResponse, error){}
 
-#define FP_FILE @"/var/mobile/Library/Preferences/FollowPlea.run"
 
-#define FP_FIRST_RUN(){ return ![[NSFileManager defaultManager] fileExistsAtPath:FP_FILE]; }
 
-#define FP_FIRST_RUN_REGISTRAR(){ [[NSFileManager defaultManager] createFileAtPath:FP_FILE contents:nil attributes:nil]; }
+/** OPTIONAL STUFF **/
+
+#define FP_FIRST_RUN (![[NSFileManager defaultManager] fileExistsAtPath:FP_FILE] ? YES : NO )
+
+#define FP_FIRST_RUN_REGISTRAR() [[NSFileManager defaultManager] createFileAtPath:FP_FILE contents:nil attributes:nil]
