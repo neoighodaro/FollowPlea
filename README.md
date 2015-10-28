@@ -4,7 +4,7 @@ This is a drop-in library to request that anyone that installs your Tweak follow
 
 ### Installation
 
-Download the ZIP of this repository (or clone it). Make sure its at the root of your project.
+Download the ZIP of this repository (or clone it).
 
 Open your Makefile and...
 
