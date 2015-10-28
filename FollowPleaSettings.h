@@ -48,4 +48,4 @@
 
 #define FP_FIRST_RUN(){ return ![[NSFileManager defaultManager] fileExistsAtPath:FP_FILE]; }
 
-#define FP_FIRST_RUN_REGISTRAR(){ return [[NSFileManager defaultManager] createFileAtPath:FP_FILE contents:nil attributes:nil]; }
+#define FP_FIRST_RUN_REGISTRAR(){ [[NSFileManager defaultManager] createFileAtPath:FP_FILE contents:nil attributes:nil]; }

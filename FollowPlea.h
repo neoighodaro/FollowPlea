@@ -82,7 +82,7 @@
 #endif
 
 #ifndef FP_FIRST_RUN_REGISTRAR
-#define FP_FIRST_RUN_REGISTRAR(){ return [[NSFileManager defaultManager] createFileAtPath:FP_FILE contents:nil attributes:nil]; }
+#define FP_FIRST_RUN_REGISTRAR(){ [[NSFileManager defaultManager] createFileAtPath:FP_FILE contents:nil attributes:nil]; }
 #endif
 
 
