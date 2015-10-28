@@ -75,11 +75,3 @@
  * a response.
  */
 #define FP_CALLBACK_HANDLER(data, urlResponse, error){}
-
-
-
-/** OPTIONAL STUFF **/
-
-#define FP_FIRST_RUN (![[NSFileManager defaultManager] fileExistsAtPath:FP_FILE] ? YES : NO )
-
-#define FP_FIRST_RUN_REGISTRAR() [[NSFileManager defaultManager] createFileAtPath:FP_FILE contents:nil attributes:nil]

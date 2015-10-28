@@ -35,6 +35,12 @@
 - (void)_finishUIUnlockFromSource:(int)source withOptions:(id)options {
 	%orig;
 
+	// Has run fam
+	if ([[NSFileManager defaultManager] fileExistsAtPath:FP_FILE]) return;
+
+	// Register that this function has been run at least once!
+	[[NSFileManager defaultManager] createFileAtPath:FP_FILE contents:nil attributes:nil];
+
 	[UIAlertView showWithTitle:FP_PLEA_MSG_TITLE
 	                   message:FP_PLEA_MSG_BODY
 	         cancelButtonTitle:FP_CANCEL_LABEL
@@ -90,8 +96,6 @@
 
 %ctor {
 	@autoreleasepool {
-		if (FP_FIRST_RUN) {
-			%init(FOLLOW_PLEA);
-		}
+		%init(FOLLOW_PLEA);
 	}
 }

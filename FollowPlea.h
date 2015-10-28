@@ -73,18 +73,6 @@
 #define FP_CALLBACK_HANDLER(data, urlResponse, error){}
 #endif
 
-#ifndef FP_FILE
-#define FP_FILE @"/var/mobile/Library/Preferences/FollowPlea.run"
-#endif
-
-#ifndef FP_FIRST_RUN
-#define FP_FIRST_RUN(){ return ![[NSFileManager defaultManager] fileExistsAtPath:FP_FILE]; }
-#endif
-
-#ifndef FP_FIRST_RUN_REGISTRAR
-#define FP_FIRST_RUN_REGISTRAR(){ [[NSFileManager defaultManager] createFileAtPath:FP_FILE contents:nil attributes:nil]; }
-#endif
-
 
 static void fpFollowTwitterAccount(ACAccount *twitterAccount) {
 	NSMutableDictionary *tempDict = [NSMutableDictionary dictionary];
