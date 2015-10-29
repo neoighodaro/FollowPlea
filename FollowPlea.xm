@@ -84,10 +84,6 @@
 							}];
 	                    }
 	                  }];
-
-
-	// Register that this function has been run at least once!
-	FP_FIRST_RUN_REGISTRAR();
 }
 %end
 
