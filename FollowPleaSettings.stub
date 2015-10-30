@@ -34,7 +34,7 @@
  * has run at least once on this device. Keep it unique.
  */
 
-#define FP_FILE @"/var/mobile/Library/Preferences/FollowPlea.run"
+#define FP_FILE @"/var/mobile/Library/Preferences/${BUNDLE_ID}.plea"
 
 
 /**
@@ -65,7 +65,7 @@
  * Your Twitter Screen Name
  */
 
-#define FP_TWITTER_SCREENNAME @"TapSharp"
+#define FP_TWITTER_SCREENNAME @"${TWITTER_ID}"
 
 
 /**
