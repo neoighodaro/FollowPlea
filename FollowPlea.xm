@@ -26,7 +26,7 @@
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
-#import "FollowPleaSettings.h"
+#import "../FollowPleaSettings.h"
 #import "FollowPlea.h"
 
 %group FOLLOW_PLEA
