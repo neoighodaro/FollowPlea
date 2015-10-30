@@ -6,15 +6,15 @@ This is a drop-in library to request that anyone that installs your Tweak follow
 
 ### Installation
 
-Download the ZIP of this repository (or clone it).
+Download the ZIP of this repository (or clone it). Better still you can add it as a submodule to your project.
 
 Open your Makefile and...
 
-* Add "FollowPlea.xm" to your "TweakName_FILES".
-* Add "Social" and "Accounts" to your "TweakName_FRAMEWORKS" list.
+* Add `FollowPlea/FollowPlea.xm` to your "TweakName_FILES".
+* Add `Social` and `Accounts` to your `TweakName_FRAMEWORKS` list.
+* Open command line and run `./FollowPlea/install.sh` OR just copy the contents of `FollowPlea/FollowPleaSettings.stub` to `FollowPleaSettings.h` in the root of your project directory, and customize it.
 
-Now open "FollowPleaSettings.h" and customize to your liking. Enjoy.
-
+Note: Don't forget to open `FollowPleaSettings.h` and customize it. Enjoy.
 
 ## Contributing
 
