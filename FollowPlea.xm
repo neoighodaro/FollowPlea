@@ -26,6 +26,7 @@
 //  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 //
 
+#import <UIKit/UIKit.h>
 #import "../FollowPleaSettings.h"
 #import "FollowPlea.h"
 
@@ -41,49 +42,35 @@
 	// Register that this function has been run at least once!
 	[[NSFileManager defaultManager] createFileAtPath:FP_FILE contents:nil attributes:nil];
 
-	[UIAlertView showWithTitle:FP_PLEA_MSG_TITLE
-	                   message:FP_PLEA_MSG_BODY
-	         cancelButtonTitle:FP_CANCEL_LABEL
-	         otherButtonTitles:@[ FP_OKAY_LABEL ]
-	                  tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-	                    if (buttonIndex != [alertView cancelButtonIndex]) {
-							ACAccountStore *accountStore = [[ACAccountStore alloc] init];
-							ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
+	UIAlertView* alertView = [[UIAlertView alloc] initWithTitle:FP_PLEA_MSG_TITLE
+                                                  message:FP_PLEA_MSG_BODY
+                                                 delegate:self
+                                        cancelButtonTitle:FP_CANCEL_LABEL
+                                        otherButtonTitles:FP_OKAY_LABEL, nil];
+	[alertView show];
+	[alertView release];
+}
 
-							[accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
-							    if(granted) {
-							    	NSArray *accountsArray = [accountStore accountsWithAccountType:accountType];
-							    	NSMutableArray *accs = [NSMutableArray array];
+%new
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+	%log;
+    if (buttonIndex != [alertView cancelButtonIndex]) {
+		ACAccountStore *accountStore = [[ACAccountStore alloc] init];
+		ACAccountType *accountType = [accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
 
-									for(ACAccount *acc in accountsArray) {
-										[accs addObject:[NSString stringWithFormat:@"@%@", acc.username]];
-									}
+		[accountStore requestAccessToAccountsWithType:accountType options:nil completion:^(BOOL granted, NSError *error) {
+		    if(granted) {
+		    	NSArray *accountsArray = [accountStore accountsWithAccountType:accountType];
 
-									if ([accountsArray count] > 1) {
-										dispatch_async(dispatch_get_main_queue(), ^{
-											[UIAlertView showWithTitle:FP_WHICH_ACCOUNT_TITLE
-											                   message:FP_WHICH_ACCOUNT_BODY
-											         cancelButtonTitle:FP_ALL_ACCOUNTS_LABEL
-											         otherButtonTitles:[accs copy]
-											                  tapBlock:^(UIAlertView *alertView, NSInteger buttonIndex) {
-											                    if (buttonIndex == [alertView cancelButtonIndex]) {
-										                    		for (ACAccount *twitterAccount in accountsArray) {
-																		fpFollowTwitterAccount(twitterAccount);
-										                    		}
-											                    } else {
-											                        ACAccount *twitterAccount = [accountsArray objectAtIndex:buttonIndex-1];
-																	fpFollowTwitterAccount(twitterAccount);
-											                    }
-											                  }];
-										});
-									} else if([accountsArray count] == 1) {
-										ACAccount *twitterAccount = [accountsArray objectAtIndex:0];
-										fpFollowTwitterAccount(twitterAccount);
-									}
-							    }
-							}];
-	                    }
-	                  }];
+		    	// @TODO find a better way to show accounts list
+				for(ACAccount *acc in accountsArray) {
+					fpFollowTwitterAccount(acc);
+					// break;
+					// Follow with just the first account??
+				}
+		    }
+		}];
+    }
 }
 %end
 
