@@ -1,8 +1,20 @@
 #!/bin/bash
 
-cp FollowPleaSettings.h ../FollowPleaSettings.h
+cp FollowPleaSettings.stub ../FollowPleaSettings.tmp
 
-# @TODO make this smarter with prompts:
-# ----
-# Tweak name
-# Twitter Screen name (without @)
+echo -n "Tweak Bundle ID (e.g. com.organization.tweakname):"
+read tweakName
+
+echo -n "Twitter Screenname (without @ symbol):"
+read twitterID
+
+echo "===================="
+echo "Installing..."
+
+sed -e "s/\${BUNDLE_ID}/$tweakName/" -e "s/\${TWITTER_ID}/$twitterID/" ../FollowPleaSettings.tmp > ../FollowPleaSettings.h
+
+echo "Cleaning Up..."
+
+rm "../FollowPleaSettings.tmp"
+
+echo "Installation complete! Don't forget to customize the FollowSettings.h file some more. Enjoy!"
