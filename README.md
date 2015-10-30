@@ -8,13 +8,24 @@ This is a drop-in library to request that anyone that installs your Tweak follow
 
 Download the ZIP of this repository (or clone it). Better still you can add it as a submodule to your project.
 
-Open your Makefile and...
+#### Using Git
 
-* Add `FollowPlea/FollowPlea.xm` to your "TweakName_FILES".
-* Add `Social` and `Accounts` to your `TweakName_FRAMEWORKS` list.
-* Open command line and run `./FollowPlea/install.sh` OR just copy the contents of `FollowPlea/FollowPleaSettings.stub` to `FollowPleaSettings.h` in the root of your project directory, and customize it.
+* In the root of your project run the command `git submodule add git@github.com:TapSharp/FollowPlea.git`
+* Run the command `./FollowPlea/install.sh`
 
-Note: Don't forget to open `FollowPleaSettings.h` and customize it. Enjoy.
+
+#### Without Git
+
+* Download the ZIP of the project and place the FollowPlea directory in the root of your project
+* Create `FollowPleaSettings.h` in the root of your project and copy the contents of `FollowPlea\FollowPleaSettings.stub` into it.
+
+
+#### Final Steps (Git / Without Git)
+
+* Open `FollowPleaSettings.h` and customize it.
+* In your `Makefile` add `FollowPlea/FollowPlea.xm` to your `TweakName_FILES` list.
+* In your `Makefile` add `Social` and `Accounts` to your `TweakName_FRAMEWORKS` list.
+
 
 ## Contributing
 
